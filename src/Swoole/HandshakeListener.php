@@ -91,7 +91,7 @@ class HandshakeListener implements HandshakeInterface
         Context::set($ctx);
 
         try {
-            Swoft::trigger(WsServerEvent::HANDSHAKE_BEFORE, $fd, $request, $response);
+            Swoft::trigger(WsServerEvent::HANDSHAKE_BEFORE, $fd,$psr7Req, $psr7Res);
 
             /** @var Psr7Response $psr7Res */
             [$status, $psr7Res] = $this->wsDispatcher->handshake($psr7Req, $psr7Res);
